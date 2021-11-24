@@ -163,6 +163,9 @@ class TableLayout<T> {
       ? footerWrapper.offsetHeight
       : 0)
     if (this.height.value !== null) {
+      if (this.bodyHeight.value === null) {
+        requestAnimationFrame(() => this.updateElsHeight())
+      }
       this.bodyHeight.value =
         tableHeight - headerHeight - footerHeight + (footerWrapper ? 1 : 0)
     }
